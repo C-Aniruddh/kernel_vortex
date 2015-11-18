@@ -34,3 +34,7 @@ static inline struct bfq_io_cq *bfq_bic_lookup(struct bfq_data *bfqd,
 		return icq_to_bic(ioc_lookup_icq(ioc, bfqd->queue));
 	return NULL;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7

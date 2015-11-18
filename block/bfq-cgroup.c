@@ -911,3 +911,7 @@ static struct bfq_group *bfq_alloc_root_group(struct bfq_data *bfqd, int node)
 	return bfqg;
 }
 #endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7

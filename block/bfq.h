@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * BFQ-v7r8 for 3.10.8+: data structures and common functions prototypes.
+=======
+ * BFQ-v7r7 for 3.10.8+: data structures and common functions prototypes.
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
  *
  * Based on ideas and code from CFQ:
  * Copyright (C) 2003 Jens Axboe <axboe@kernel.dk>
@@ -419,6 +423,10 @@ enum bfq_device_speed {
  * @group_list: list of all the bfq_groups active on the device.
  * @active_list: list of all the bfq_queues active on the device.
  * @idle_list: list of all the bfq_queues idle on the device.
+<<<<<<< HEAD
+=======
+ * @bfq_quantum: max number of requests dispatched per dispatch round.
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
  * @bfq_fifo_expire: timeout for async/sync requests; when it expires
  *                   requests are served in fifo order.
  * @bfq_back_penalty: weight of backward seeks wrt forward ones.
@@ -526,6 +534,10 @@ struct bfq_data {
 	struct list_head active_list;
 	struct list_head idle_list;
 
+<<<<<<< HEAD
+=======
+	unsigned int bfq_quantum;
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
 	unsigned int bfq_fifo_expire[2];
 	unsigned int bfq_back_penalty;
 	unsigned int bfq_back_max;
@@ -568,6 +580,10 @@ enum bfqq_state_flags {
 	BFQ_BFQQ_FLAG_must_alloc,	/* must be allowed rq alloc */
 	BFQ_BFQQ_FLAG_fifo_expire,	/* FIFO checked in this slice */
 	BFQ_BFQQ_FLAG_idle_window,	/* slice idling enabled */
+<<<<<<< HEAD
+=======
+	BFQ_BFQQ_FLAG_prio_changed,	/* task priority has changed */
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
 	BFQ_BFQQ_FLAG_sync,		/* synchronous queue */
 	BFQ_BFQQ_FLAG_budget_new,	/* no completion with this budget */
 	BFQ_BFQQ_FLAG_IO_bound,		/*
@@ -611,6 +627,10 @@ BFQ_BFQQ_FNS(wait_request);
 BFQ_BFQQ_FNS(must_alloc);
 BFQ_BFQQ_FNS(fifo_expire);
 BFQ_BFQQ_FNS(idle_window);
+<<<<<<< HEAD
+=======
+BFQ_BFQQ_FNS(prio_changed);
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
 BFQ_BFQQ_FNS(sync);
 BFQ_BFQQ_FNS(budget_new);
 BFQ_BFQQ_FNS(IO_bound);
@@ -791,7 +811,11 @@ static inline void bfq_put_bfqd_unlock(struct bfq_data *bfqd,
 	spin_unlock_irqrestore(bfqd->queue->queue_lock, *flags);
 }
 
+<<<<<<< HEAD
 static void bfq_check_ioprio_change(struct bfq_io_cq *bic);
+=======
+static void bfq_changed_ioprio(struct bfq_io_cq *bic);
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
 static void bfq_put_queue(struct bfq_queue *bfqq);
 static void bfq_dispatch_insert(struct request_queue *q, struct request *rq);
 static struct bfq_queue *bfq_get_queue(struct bfq_data *bfqd,
@@ -803,3 +827,7 @@ static void bfq_put_async_queues(struct bfq_data *bfqd, struct bfq_group *bfqg);
 static void bfq_exit_bfqq(struct bfq_data *bfqd, struct bfq_queue *bfqq);
 
 #endif /* _BFQ_H */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
