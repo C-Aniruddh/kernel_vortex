@@ -1,5 +1,5 @@
 #
-#Custom build script for cyanpro kernel
+#Custom build script for Vortex kernel
 # This software is licensed under the terms of the GNU General Public
 # License version 2, as published by the Free Software Foundation, and
 # may be copied, distributed, and modified under those terms.
@@ -22,10 +22,8 @@ DTBTOOL=$KERNEL_DIR/dtbToolCM
 toolchain ()
 {
 clear
-echo -e "$gre Welcome to Vortex Build System$white"
-echo -e "Setting up host and user"
-export KBUILD_BUILD_USER="C-Aniruddh"
-export KBUILD_BUILD_HOST="Crux"
+echo -e " "
+echo -e "$gre Welcome to Vortex build system$white"
 echo -e " "
 echo -e "$yellow Select which toolchain you want to build with?$white"
 echo -e "$yellow 1.UBERTC AARCH64$white"
@@ -71,23 +69,25 @@ case $ch in
 esac
 }
 device
-make -j16
-make Image -j16
-make dtbs -j16
-make modules -j16
+make -j32
+make Image -j32
+make dtbs -j32
+make modules -j32
+mkdir ~/vortex_out
+mkdir ~/vortex_final
 $DTBTOOL -2 -o $KERNEL_DIR/arch/arm64/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
-mv arch/arm64/boot/dt.img ~/vortex_out/dtb
-cp drivers/staging/prima/wlan.ko ~/vortex_out/modules/
-cp fs/nls/nls_utf8.ko ~/vortex_out/modules/
-cp arch/arm64/boot/Image ~/vortex_out/zImage
+mv arch/arm64/boot/dt.img ~/vortex_out/tools
+cp drivers/staging/prima/wlan.ko ~/vortex_out/system/lib/modules/
+cp fs/nls/nls_utf8.ko ~/vortex_out/system/lib/modules/
+cp arch/arm64/boot/Image ~/vortex_out/tools/zImage
 cd ~/vortex_out/
-cd modules/
+cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
-cd ~/vortex_out/
+cd ~/radon_outl/
 case $choice in
-1) zip -r Vortex-1.0-uc.zip * ;;
-2) zip -r Vortex-1.0-sm.zip * ;;
-3) zip -r Vortex-1.0-gc.zip * ;;
+1) zip -r Vortex-1.0-uc-lettuce.zip * ;;
+2) zip -r Vortex-1.0-sm-lettuce.zip * ;;
+3) zip -r Vortex-1.0-gc-lettuce.zip * ;;
 *) echo -e "error" ;;
 esac
 mv *.zip ~/vortex_final/
