@@ -24,6 +24,9 @@ toolchain ()
 clear
 echo -e " "
 echo -e "$gre Welcome to Vortex build system$white"
+echo -e "Setting up host and user"
+export KBUILD_BUILD_USER="C-Aniruddh"
+export KBUILD_BUILD_HOST="Crux"
 echo -e " "
 echo -e "$yellow Select which toolchain you want to build with?$white"
 echo -e "$yellow 1.UBERTC AARCH64$white"
