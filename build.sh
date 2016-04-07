@@ -86,7 +86,7 @@ cp arch/arm64/boot/Image ~/vortex_out/tools/zImage
 cd ~/vortex_out/
 cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
-cd ~/radon_outl/
+cd ~/vortex_out/
 case $choice in
 1) zip -r Vortex-1.0-uc-lettuce.zip * ;;
 2) zip -r Vortex-1.0-sm-lettuce.zip * ;;
