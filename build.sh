@@ -79,11 +79,15 @@ make modules -j32
 mkdir ~/vortex_out
 mkdir ~/vortex_out/tools
 mkdir ~/vortex_final
+cp -rf ~/vortex/flashable/META-INF ~/vortex_out
+cp ~/vortex/flashable/flash_kernel.sh ~/vortex_out/tools/
+cp ~/vortex/flashable/mkbootimg ~/vortex_out/tools/
+cp ~/vortex/flashable/unpackbootimg ~/vortex_out/tools/
 $DTBTOOL -2 -o $KERNEL_DIR/arch/arm64/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
 mv arch/arm64/boot/dt.img ~/vortex_out/tools
-cp drivers/staging/prima/wlan.ko ~/vortex_out/system/lib/modules/
-cp fs/nls/nls_utf8.ko ~/vortex_out/system/lib/modules/
-cp arch/arm64/boot/Image ~/vortex_out/tools/zImage
+cp ~/vortex/drivers/staging/prima/wlan.ko ~/vortex_out/system/lib/modules/
+cp ~/vortex/fs/nls/nls_utf8.ko ~/vortex_out/system/lib/modules/
+cp ~/vortex/arch/arm64/boot/Image ~/vortex_out/tools/zImage
 cd ~/vortex_out/
 cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
