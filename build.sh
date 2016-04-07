@@ -77,6 +77,7 @@ make Image -j32
 make dtbs -j32
 make modules -j32
 mkdir ~/vortex_out
+mkdir ~/vortex_out/tools
 mkdir ~/vortex_final
 $DTBTOOL -2 -o $KERNEL_DIR/arch/arm64/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
 mv arch/arm64/boot/dt.img ~/vortex_out/tools
