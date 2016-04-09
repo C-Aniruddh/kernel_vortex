@@ -20,6 +20,9 @@ PANIC_ON_BUG := 1
 #Re-enable wifi on WDI timeout
 RE_ENABLE_WIFI_ON_WDI_TIMEOUT := 0
 
+#Measure Roam Delay
+MEASURE_ROAM_TIME_DELAY := 0
+
 ifeq ($(CONFIG_CFG80211),y)
 HAVE_CFG80211 := 1
 else
@@ -228,9 +231,9 @@ SME_CSR_OBJS := $(SME_SRC_DIR)/csr/csrApiRoam.o \
 		$(SME_SRC_DIR)/csr/csrNeighborRoam.o \
 		$(SME_SRC_DIR)/csr/csrUtil.o
 
-ifeq ($(CONFIG_QCOM_ESE),y)
-ifneq ($(CONFIG_QCOM_ESE_UPLOAD),y)
-SME_CSR_OBJS += $(SME_SRC_DIR)/csr/csrEse.o
+ifeq ($(CONFIG_QCOM_CCX),y)
+ifneq ($(CONFIG_QCOM_CCX_UPLOAD),y)
+SME_CSR_OBJS += $(SME_SRC_DIR)/csr/csrCcx.o
 endif
 endif
 
@@ -256,8 +259,6 @@ SME_P2P_OBJS = $(SME_SRC_DIR)/p2p/p2p_Api.o
 
 SME_RRM_OBJS := $(SME_SRC_DIR)/rrm/sme_rrm.o
 
-SME_NAN_OBJS = $(SME_SRC_DIR)/nan/nan_Api.o
-
 SME_OBJS :=	$(SME_BTC_OBJS) \
 		$(SME_CCM_OBJS) \
 		$(SME_CMN_OBJS) \
@@ -266,8 +267,7 @@ SME_OBJS :=	$(SME_BTC_OBJS) \
 		$(SME_P2P_OBJS) \
 		$(SME_PMC_OBJS) \
 		$(SME_QOS_OBJS) \
-		$(SME_RRM_OBJS) \
-		$(SME_NAN_OBJS)
+		$(SME_RRM_OBJS)
 
 ############ SVC ############
 SVC_DIR :=	CORE/SVC
@@ -461,7 +461,6 @@ OBJS :=		$(BAP_OBJS) \
 		$(WDI_OBJS)
 
 EXTRA_CFLAGS += $(INCS)
-EXTRA_CFLAGS += -fno-pic
 
 CDEFINES :=	-DANI_BUS_TYPE_PLATFORM=1 \
 		-DANI_LITTLE_BYTE_ENDIAN \
@@ -607,8 +606,11 @@ ifeq ($(CONFIG_ENABLE_LINUX_REG), y)
 CDEFINES += -DCONFIG_ENABLE_LINUX_REG
 endif
 
+ifeq ($(MEASURE_ROAM_TIME_DELAY),1)
+CDEFINES += -DDEBUG_ROAM_DELAY
+endif
+
 CDEFINES += -DFEATURE_WLAN_CH_AVOID
-CDEFINES += -DWLAN_FEATURE_AP_HT40_24G
 
 ifeq ($(EXISTS_MSM_SMD),1)
 CDEFINES += -DEXISTS_MSM_SMD
