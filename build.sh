@@ -16,6 +16,7 @@ yellow='\033[0;33m'
 white='\033[0m'
 red='\033[0;31m'
 gre='\e[0;32m'
+ZIPDATE=$(date +'%m%d%Y')
 KERNEL_DIR=$PWD
 zimage=$KERNEL_DIR/arch/arm64/boot/Image
 DTBTOOL=$KERNEL_DIR/dtbToolCM
@@ -93,9 +94,9 @@ cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
 cd ~/vortex_out/
 case $choice in
-1) zip -r Vortex-1.0-uc-lettuce.zip * ;;
-2) zip -r Vortex-1.0-sm-lettuce.zip * ;;
-3) zip -r Vortex-1.0-gc-lettuce.zip * ;;
+1) zip -r Vortex-1.0-uc-"$ZIPDATE"-lettuce.zip * ;;
+2) zip -r Vortex-1.0-sm-"$ZIPDATE"-lettuce.zip * ;;
+3) zip -r Vortex-1.0-gc-"$ZIPDATE"-lettuce.zip * ;;
 *) echo -e "error" ;;
 esac
 mv *.zip ~/vortex_final/
