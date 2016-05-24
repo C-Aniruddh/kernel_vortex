@@ -77,30 +77,30 @@ make -j32
 make Image -j32
 make dtbs -j32
 make modules -j32
-mkdir ~/vortex_out
-mkdir ~/vortex_out/tools
-mkdir ~/vortex_final
-cp -rf ~/vortex/flashable/META-INF ~/vortex_out
-cp ~/vortex/flashable/flash_kernel.sh ~/vortex_out/tools/
-cp ~/vortex/flashable/mkbootimg ~/vortex_out/tools/
-cp ~/vortex/flashable/unpackbootimg ~/vortex_out/tools/
+mkdir /home/aniruddh/vortex_out
+mkdir /home/aniruddh/vortex_out/tools
+mkdir /home/aniruddh/vortex_final
+cp -rf /home/aniruddh/vortex/flashable/META-INF /home/aniruddh/vortex_out
+cp /home/aniruddh/vortex/flashable/flash_kernel.sh /home/aniruddh/vortex_out/tools/
+cp /home/aniruddh/vortex/flashable/mkbootimg /home/aniruddh/vortex_out/tools/
+cp /home/aniruddh/vortex/flashable/unpackbootimg /home/aniruddh/vortex_out/tools/
 $DTBTOOL -2 -o $KERNEL_DIR/arch/arm64/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
-mv arch/arm64/boot/dt.img ~/vortex_out/tools
-cp ~/vortex/drivers/staging/prima/wlan.ko ~/vortex_out/system/lib/modules/
-cp ~/vortex/fs/nls/nls_utf8.ko ~/vortex_out/system/lib/modules/
-cp ~/vortex/arch/arm64/boot/Image ~/vortex_out/tools/zImage
-cd ~/vortex_out/
+mv arch/arm64/boot/dt.img /home/aniruddh/vortex_out/tools
+cp /home/aniruddh/vortex/drivers/staging/prima/wlan.ko /home/aniruddh/vortex_out/system/lib/modules/
+cp /home/aniruddh/vortex/fs/nls/nls_utf8.ko /home/aniruddh/vortex_out/system/lib/modules/
+cp /home/aniruddh/vortex/arch/arm64/boot/Image /home/aniruddh/vortex_out/tools/zImage
+cd /home/aniruddh/vortex_out/
 cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
-cd ~/vortex_out/
+cd /home/aniruddh/vortex_out/
 case $choice in
 1) zip -r Vortex-1.1-uc-"$ZIPDATE"-lettuce.zip * ;;
 2) zip -r Vortex-1.1-sm-"$ZIPDATE"-lettuce.zip * ;;
 3) zip -r Vortex-1.1-gc-"$ZIPDATE"-lettuce.zip * ;;
 *) echo -e "error" ;;
 esac
-mv *.zip ~/vortex_final/
-cd ~/vortex/
+mv *.zip /home/aniruddh/vortex_final/
+cd /home/aniruddh/vortex/
 End=$(date +"%s")
 Diff=$(($End - $Start))
 if ! [ -a $zimage ];

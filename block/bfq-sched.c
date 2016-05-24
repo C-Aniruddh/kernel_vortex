@@ -636,9 +636,6 @@ __bfq_entity_update_weight_prio(struct bfq_service_tree *old_st,
 			entity->orig_weight = entity->new_weight;
 			entity->ioprio =
 				bfq_weight_to_ioprio(entity->orig_weight);
-<<<<<<< HEAD
-		}
-=======
 		} else if (entity->new_ioprio != entity->ioprio) {
 			entity->ioprio = entity->new_ioprio;
 			entity->orig_weight =
@@ -646,7 +643,6 @@ __bfq_entity_update_weight_prio(struct bfq_service_tree *old_st,
 		} else
 			entity->new_weight = entity->orig_weight =
 				bfq_ioprio_to_weight(entity->ioprio);
->>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
 
 		entity->ioprio_class = entity->new_ioprio_class;
 		entity->ioprio_changed = 0;
@@ -1188,7 +1184,4 @@ static void bfq_add_bfqq_busy(struct bfq_data *bfqd, struct bfq_queue *bfqq)
 	if (bfqq->wr_coeff > 1)
 		bfqd->wr_busy_queues++;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 36f89df... vortex: add FIOPS and BFQv7r7
