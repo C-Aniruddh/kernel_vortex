@@ -94,9 +94,9 @@ cd system/lib/modules/
 $STRIP --strip-unneeded *.ko
 cd /home/aniruddh/vortex_out/
 case $choice in
-1) zip -r Vortex-1.1-uc-"$ZIPDATE"-lettuce.zip * ;;
-2) zip -r Vortex-1.1-sm-"$ZIPDATE"-lettuce.zip * ;;
-3) zip -r Vortex-1.1-gc-"$ZIPDATE"-lettuce.zip * ;;
+1) zip -r Vortex-2.0-uc-"$ZIPDATE"-lettuce.zip * ;;
+2) zip -r Vortex-2.0-sm-"$ZIPDATE"-lettuce.zip * ;;
+3) zip -r Vortex-2.0-gc-"$ZIPDATE"-lettuce.zip * ;;
 *) echo -e "error" ;;
 esac
 mv *.zip /home/aniruddh/vortex_final/
