@@ -1,5 +1,5 @@
 ui_print("");
-ui_print("Vortex 1.0 by Aniruddh Chandratre a.k.a ace312 ");
+ui_print("Vortex 2.0 by Aniruddh Chandratre a.k.a ace312 ");
 package_extract_dir("tools", "/tmp");
 set_perm(0, 0, 0777, "/tmp/mkbootimg");
 set_perm(0, 0, 0777, "/tmp/unpackbootimg");
